@@ -1,0 +1,28 @@
+server:
+  port: 8200
+
+spring:
+  application:
+    name:  jta-atomikos-demo
+    #JTA开启
+  jta:
+    enabled: true
+
+
+mybatis:
+  type-aliases-package: com.linjingc.jtaatomikosdemo.entity
+  # 配置自动转换驼峰标识
+  configuration:
+    map-underscore-to-camel-case: true
+
+mysql:
+    datasource:
+      test1:
+        url: jdbc:mysql://127.0.0.1:3339/db_user?Unicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: 123456
+      test2:
+        url: jdbc:mysql://127.0.0.1:3339/db_account?Unicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: 123456
+
