@@ -1,0 +1,50 @@
+server:
+  port: 8400
+
+spring:
+  application:
+    name:  simple-atomikos-demo
+  jta:
+    enabled: true
+    atomikos:
+      connectionfactory:
+        borrow-connection-timeout: 2000
+      datasource:
+        test1:
+          unique-resource-name: dataSourceOne
+          max-pool-size: 5 # The maximum size of the pool.
+          min-pool-size: 1  # The minimum size of the pool.
+          max-life-time: 20000 # The time, in seconds, that a connection can be pooled for before being destroyed. 0 denotes no limit.
+          max-idle-time: 60 # The time, in seconds, after which connections are cleaned up from the pool.
+          maintenance-interval: 60 # The time, in seconds, between runs of the pool's maintenance thread.
+          borrow-connection-timeout: 10000  # Timeout, in seconds, for borrowing connections from the pool.
+          reap-timeout: 0 # The reap timeout, in seconds, for borrowed connections. 0 denotes no limit.
+          test-query: SELECT 1
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          xa-properties:
+            url: jdbc:mysql://127.0.0.1:3339/db_user?Unicode=true&characterEncoding=UTF-8&useSSL=false
+            user: root
+            password: 123456
+            pinGlobalTxToPhysicalConnection : true
+        test2:
+          unique-resource-name: dataSourceTwo
+          max-pool-size: 5 # The maximum size of the pool.
+          min-pool-size: 1  # The minimum size of the pool.
+          max-life-time: 20000 # The time, in seconds, that a connection can be pooled for before being destroyed. 0 denotes no limit.
+          max-idle-time: 60 # The time, in seconds, after which connections are cleaned up from the pool.
+          maintenance-interval: 60 # The time, in seconds, between runs of the pool's maintenance thread.
+          borrow-connection-timeout: 10000  # Timeout, in seconds, for borrowing connections from the pool.
+          reap-timeout: 0 # The reap timeout, in seconds, for borrowed connections. 0 denotes no limit.
+          test-query: SELECT 1
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          xa-properties:
+            url: jdbc:mysql://127.0.0.1:3339/db_account?Unicode=true&characterEncoding=UTF-8&useSSL=false
+            user: root
+            password: 123456
+            pinGlobalTxToPhysicalConnection : true
+
+mybatis:
+  type-aliases-package: com.linjingc.jtaatomikosdemo.entity
+  # 配置自动转换驼峰标识
+  configuration:
+    map-underscore-to-camel-case: true

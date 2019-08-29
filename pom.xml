@@ -19,6 +19,7 @@
     </properties>
     <modules>
         <module>jta-atomikos-demo</module>
+        <module>simple-atomikos-demo</module>
     </modules>
 
     <dependencies>
